@@ -1,5 +1,5 @@
 
-##Setup Options
+## Setup Options
 
 *Java version must be at least 15*
 
