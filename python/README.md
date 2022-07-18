@@ -1,5 +1,5 @@
 
-Setup
+##Setup
 
 1. Create a virtual environment
 
@@ -11,7 +11,7 @@ $ . .venv/bin/activate
 2. Install dependencies
 
 ```
-$ pip install pyjwt requests
+$ pip install pyjwt requests cryptography
 ```
 
 3. Run the script

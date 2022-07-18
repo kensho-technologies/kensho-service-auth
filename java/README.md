@@ -1,5 +1,7 @@
 
-Setup Options
+##Setup Options
+
+*Java version must be at least 15*
 
 1. Run the jar file.
 
