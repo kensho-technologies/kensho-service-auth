@@ -16,6 +16,3 @@ class TestAuth(unittest.TestCase):
         output = subprocess.check_output(f"python python/kensho_auth.py {CLIENT_ID} {PRIVATE_KEY_FILE} {SCOPES}", shell=True).decode('utf-8')
         is_token=bool(re.match("^.{90}\..{366}\..{342}$", output))
         assert is_token == True, "Error running python auth"
-           
-    
-    

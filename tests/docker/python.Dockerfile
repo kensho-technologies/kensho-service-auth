@@ -10,4 +10,4 @@ COPY python /home/app/src/python
 COPY tests /home/app/src/tests
 RUN pip install pyjwt requests cryptography
 WORKDIR /home/app/src/
-CMD python -m unittest tests/test_auth.py 
+CMD python -m unittest tests/test_auth.py
