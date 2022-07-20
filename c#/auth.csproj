@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="BouncyCastle" />
+    <None Remove="jose-jwt" />
+    <None Remove="Microsoft.IdentityModel.Tokens" />
+    <None Remove="Newtonsoft.Json" />
+    <None Remove="Portable.BouncyCastle" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="jose-jwt" Version="4.0.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.21.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
+  </ItemGroup>
+</Project>
