@@ -6,7 +6,8 @@ using Org.BouncyCastle.Crypto.Parameters;
 using Org.BouncyCastle.OpenSsl;
 using Org.BouncyCastle.Security;
 
-class Auth
+namespace auth;
+public class Auth
 {
     const string OKTA_TOKEN_ENDPOINT = "https://kensho.okta.com/oauth2/default/v1/token";
     string client_id, private_key_file;
