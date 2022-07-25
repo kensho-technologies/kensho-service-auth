@@ -13,6 +13,8 @@
     <None Remove="Microsoft.IdentityModel.Tokens" />
     <None Remove="Newtonsoft.Json" />
     <None Remove="Portable.BouncyCastle" />
+    <None Remove="Microsoft.NET.Test.Sdk" />
+    <None Remove="MSTest.TestFramework" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="jose-jwt" Version="4.0.0" />
