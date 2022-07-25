@@ -1,5 +1,5 @@
 EXIT_CODE=0
-for folder in python java ; do 
+for folder in python java js ; do 
     echo $folder
     cd $folder
     ./run-tests.sh
