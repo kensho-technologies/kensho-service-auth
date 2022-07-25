@@ -64,4 +64,3 @@ auth.get_access_token(process.argv.slice(4).join(" ")).then(token => {
 module.exports = {
     KenshoAuth: KenshoAuth
 }
-
