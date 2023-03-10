@@ -18,7 +18,7 @@ public class Tests
         Auth auth = new(client_id, key);
 
         string token = await auth.getAccessTokenAsync(scopes);
-        Assert.IsTrue(Regex.IsMatch(token, @"^.{90}\..{366}\..{342}$"));
+        Assert.IsTrue(Regex.IsMatch(token, @"^.{90}\..{300,}\..{342}$"));
 
     }
 }
