@@ -1,2 +1,3 @@
-docker build . -t kensho-auth-python
-docker run -v ${PRIVATE_KEY_FILE}:/home/app/src/private_key.pem -e PRIVATE_KEY_FILE="/home/app/src/private_key.pem" -e SCOPES -e CLIENT_ID kensho-auth-python
+#!/bin/bash
+docker build $(dirname $0) -t kensho-auth-python
+docker run -e PRIVATE_KEY_FILE="/home/app/src/private_key.pem" -e SCOPES -e CLIENT_ID --rm kensho-auth-python
