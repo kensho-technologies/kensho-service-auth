@@ -23,15 +23,26 @@ public class Auth
         string private_key_pem = File.ReadAllText(this.private_key_file);
 
         RSAParameters rsaParams;
+        RsaPrivateCrtKeyParameters privateRsaParams;
         using (var tr = new StringReader(private_key_pem))
         {
             var pemReader = new PemReader(tr);
-            var keyPair = pemReader.ReadObject() as AsymmetricCipherKeyPair;
-            if (keyPair == null)
-            {
-                throw new Exception("Could not read RSA private key");
+            // Check if pem is PKSC#1 or different format
+            if (private_key_pem.StartsWith("-----BEGIN RSA PRIVATE KEY-----")) {
+                var keyPair = pemReader.ReadObject() as AsymmetricCipherKeyPair;
+                if (keyPair == null)
+                {
+                    throw new Exception("Could not read RSA private key");
+                }
+                privateRsaParams = keyPair.Private as RsaPrivateCrtKeyParameters;
+            } else {
+                var keyPair = pemReader.ReadObject() as AsymmetricKeyParameter;
+                if (keyPair == null)
+                {
+                    throw new Exception("Could not read RSA private key");
+                }
+                privateRsaParams = keyPair as RsaPrivateCrtKeyParameters;
             }
-            var privateRsaParams = keyPair.Private as RsaPrivateCrtKeyParameters;
             rsaParams = DotNetUtilities.ToRSAParameters(privateRsaParams);
         }
 
