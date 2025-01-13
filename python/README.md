@@ -11,7 +11,7 @@ $ . .venv/bin/activate
 2. Install dependencies
 
 ```
-$ pip install pyjwt requests cryptography
+$ pip install -r requirements.txt
 ```
 
 3. Run the script
