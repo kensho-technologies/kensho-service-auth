@@ -3,20 +3,20 @@
 
 1. Create a virtual environment
 
-```
+```bash
 $ python -m venv .venv
 $ . .venv/bin/activate
 ```
 
 2. Install dependencies
 
-```
-$ pip install pyjwt requests cryptography
+```bash
+$ pip install -r requirements.txt
 ```
 
 3. Run the script
 
-```
+```bash
 $ python kensho_auth.py <clientid> <privatekeyfilename> <scope>
 ```
 
