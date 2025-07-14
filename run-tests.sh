@@ -1,12 +1,11 @@
+#!/bin/bash
 EXIT_CODE=0
-for folder in python java c# js ; do 
-    echo $folder
-    cd $folder
-    ./run-tests.sh
-    if [ $? -ne 0 ] 
+for directory in $(ls -d $(dirname $0)/*/); do
+    echo $directory
+    ./$directory/run-tests.sh
+    if [ $? -ne 0 ]
     then
         EXIT_CODE=1
     fi
-    cd ..
 done
 exit $EXIT_CODE
