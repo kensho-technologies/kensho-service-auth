@@ -6,7 +6,7 @@
 1. Run the jar file.
 
 ```bash
-$ java -cp kensho_auth.jar com.example.App <clientid> <privatekeyfilename> <scope>
+$ java -cp kensho_auth.jar com.example.App <clientid> <privatekeyfilename> <kid> <scope>
 ```
 
 Or
@@ -22,7 +22,7 @@ $ mvn package
 2. Run the jar file with dependencies in the created target folder.
 
 ```bash
-$ java -cp target/auth-0.1-jar-with-dependencies.jar com.example.App <clientid> <privatekeyfilename> <scope>
+$ java -cp target/auth-0.1-jar-with-dependencies.jar com.example.App <clientid> <privatekeyfilename> <kid> <scope>
 ```
 
 

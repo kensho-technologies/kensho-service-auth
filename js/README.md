@@ -10,6 +10,6 @@ $ npm install
 2. Run the script.
 
 ```bash
-$ node kensho-auth.js <clientid> <privatekeyfilename> <scope>
+$ node kensho-auth.js <clientid> <privatekeyfilename> <kid> <scope>
 ```
 

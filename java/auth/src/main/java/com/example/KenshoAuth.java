@@ -36,11 +36,12 @@ public class KenshoAuth
 {
     private final String OKTA_TOKEN_ENDPOINT = "https://kensho.okta.com/oauth2/default/v1/token";
 
-    private String clientID, privateKeyFilePath;
+    private String clientID, privateKeyFilePath, kid;
 
-    KenshoAuth(String clientID, String privateKeyFilePath) {
+    KenshoAuth(String clientID, String privateKeyFilePath, String kid) {
         this.clientID = clientID;
         this.privateKeyFilePath = privateKeyFilePath;
+        this.kid = kid;
     }
     
     /**
@@ -73,6 +74,7 @@ public class KenshoAuth
         PrivateKey privKey = getPrivateKey();
         long iat = System.currentTimeMillis();
         jwt = Jwts.builder()
+            .setHeaderParam("kid", this.kid)
             .setIssuer(this.clientID)
             .setSubject(this.clientID)
             .setAudience(this.OKTA_TOKEN_ENDPOINT)

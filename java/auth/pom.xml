@@ -84,6 +84,7 @@
                 <systemPropertyVariables>
                     <CLIENT_ID>${env.CLIENT_ID}</CLIENT_ID>
                     <PRIVATE_KEY_FILE>${env.PRIVATE_KEY_FILE}</PRIVATE_KEY_FILE>
+                    <KID>${env.KID}</KID>
                     <SCOPES>${env.SCOPES}</SCOPES>
                 </systemPropertyVariables>
             </configuration>

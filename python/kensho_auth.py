@@ -9,9 +9,10 @@ import jwt
 class KenshoAuth:
     OKTA_TOKEN_ENDPOINT = "https://kensho.okta.com/oauth2/default/v1/token"
 
-    def __init__(self, client_id: str, private_key_filename: str):
+    def __init__(self, client_id: str, private_key_filename: str, kid: str):
         self.client_id = client_id
         self.private_key_filename = private_key_filename
+        self.kid = kid
 
     def make_self_claims(self):
         """Make a dictionary of claims about outselves."""
@@ -26,10 +27,10 @@ class KenshoAuth:
         return claims
 
     def make_jwt(self, claims: Dict[str,Any]):
-        """Sign the claims and form a Json Web Token."""
+        """Sign the claims and form a Json Web Token, identifying the signing key by its kid."""
         with open(self.private_key_filename, "rb") as f:
             private_key = f.read()
-        return jwt.encode(claims, private_key, algorithm="RS256")
+        return jwt.encode(claims, private_key, algorithm="RS256", headers={"kid": self.kid})
 
     def get_access_token(self, scopes: [str]):
         """Obtain an access token from Okta for given scopes."""
@@ -51,12 +52,12 @@ class KenshoAuth:
 
 def main(args: [str]):
     """Obtain and print an access token."""
-    if len(args) <= 2:
-        print("Usage: client_id private_key_filename scopenames...")
+    if len(args) <= 3:
+        print("Usage: client_id private_key_filename kid scopenames...")
         sys.exit(1)
 
-    auth = KenshoAuth(args[0], args[1])
-    access_token = auth.get_access_token(args[2:])
+    auth = KenshoAuth(args[0], args[1], args[2])
+    access_token = auth.get_access_token(args[3:])
     print(access_token)
 
 

@@ -17,6 +17,6 @@ $ pip install -r requirements.txt
 3. Run the script
 
 ```bash
-$ python kensho_auth.py <clientid> <privatekeyfilename> <scope>
+$ python kensho_auth.py <clientid> <privatekeyfilename> <kid> <scope>
 ```
 
