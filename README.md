@@ -8,6 +8,7 @@ Local Testing
 ```bash
 $ export PRIVATE_KEY_FILE="<path to private key>"
 $ export CLIENT_ID="<clientid>"
+$ export KID="<key id>"
 $ export SCOPE="<scope>"
 ```
 

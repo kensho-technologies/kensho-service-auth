@@ -14,10 +14,11 @@ public class AppTest
     @Test
     public void tokenCreated()
     {
-        String clientID = System.getProperty("CLIENT_ID"); 
+        String clientID = System.getProperty("CLIENT_ID");
         String privateKeyFilePath = System.getProperty("PRIVATE_KEY_FILE");
+        String kid = System.getProperty("KID");
         String scopes = System.getProperty("SCOPES");
-        KenshoAuth auth = new KenshoAuth(clientID, privateKeyFilePath);
+        KenshoAuth auth = new KenshoAuth(clientID, privateKeyFilePath, kid);
         String accessToken = auth.getAccessToken(String.join(" ", scopes));
         assertTrue( true );
     }

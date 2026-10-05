@@ -5,7 +5,7 @@ Setup
 
 ```bash
 $ cd auth
-$ dotnet run <clientid> <privatekeyfilename> <scope>
+$ dotnet run <clientid> <privatekeyfilename> <kid> <scope>
 ```
 
 

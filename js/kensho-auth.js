@@ -1,8 +1,9 @@
 const OKTA_TOKEN_ENDPOINT = "https://kensho.okta.com/oauth2/default/v1/token";
 class KenshoAuth {
-    constructor(client_id, private_key_file) {
+    constructor(client_id, private_key_file, kid) {
         this.client_id = client_id;
         this.private_key_file = private_key_file;
+        this.kid = kid;
     }
 
     async make_jwt() {
@@ -19,6 +20,7 @@ class KenshoAuth {
             .setProtectedHeader({
                 typ: 'JWT',
                 alg: 'RS256',
+                kid: this.kid,
             })
             .setAudience(OKTA_TOKEN_ENDPOINT)
             .setIssuedAt(iat)
@@ -57,8 +59,8 @@ class KenshoAuth {
     }
 }
 
-let auth = new KenshoAuth(process.argv[2], process.argv[3]);
-auth.get_access_token(process.argv.slice(4).join(" ")).then(token => {
+let auth = new KenshoAuth(process.argv[2], process.argv[3], process.argv[4]);
+auth.get_access_token(process.argv.slice(5).join(" ")).then(token => {
     console.log(token);
 })
 module.exports = {

@@ -5,8 +5,9 @@ describe('KenshoAuth', () => {
     it('should get access token', () => {
         let client_id = process.env.CLIENT_ID;
         let private_key_file = process.env.PRIVATE_KEY_FILE;
+        let kid = process.env.KID;
         let scopes = process.env.SCOPES;
-        let auth = new KenshoAuth(client_id, private_key_file);
+        let auth = new KenshoAuth(client_id, private_key_file, kid);
         return auth.get_access_token(scopes).then(token => {
             expect(token).match(/^.{90}\..{300,}\..{342}$/)
         })

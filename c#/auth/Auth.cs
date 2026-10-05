@@ -10,12 +10,13 @@ namespace auth;
 public class Auth
 {
     const string OKTA_TOKEN_ENDPOINT = "https://kensho.okta.com/oauth2/default/v1/token";
-    string client_id, private_key_file;
+    string client_id, private_key_file, kid;
 
-    public Auth(string client_id, string private_key_file)
+    public Auth(string client_id, string private_key_file, string kid)
     {
         this.client_id = client_id;
         this.private_key_file = private_key_file;
+        this.kid = kid;
     }
 
     public string makeJWT()
@@ -60,7 +61,8 @@ public class Auth
                 { "sub", this.client_id },
                 { "iss", this.client_id }
             };
-            return Jose.JWT.Encode(payload, rsa, Jose.JwsAlgorithm.RS256);
+            var headers = new Dictionary<string, object>() { { "kid", this.kid } };
+            return Jose.JWT.Encode(payload, rsa, Jose.JwsAlgorithm.RS256, extraHeaders: headers);
         }
     }
 
@@ -91,7 +93,7 @@ class App
 {
     static async Task Main(string[] args)
     {
-        Auth auth = new(args[0], args[1]);
-        Console.WriteLine(await auth.getAccessTokenAsync(String.Join(" ", args[2..])));
+        Auth auth = new(args[0], args[1], args[2]);
+        Console.WriteLine(await auth.getAccessTokenAsync(String.Join(" ", args[3..])));
     }
 }
